@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Student Info</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="header">STUDENT CARD</div>
+    <div id="container">
+      <div id="display_card"></div>
+      <div id="box">
+        <div class="design">
+          <div id="box_head">
+            <h2>Welcome 🌸</h2>
+            Do you want to enter your details:
+          </div>
+          <br /><br />
+          <div id="option-btm">
+            <button class="btn" onclick="yesEvent()">
+              YES
+            </button>
+            <button class="btn" onclick="noEvent()">
+              NO
+            </button>
+          </div>
+        </div>
+      </div>
+      <div id="infoCard"></div>
+    </div>
+    <script>
+      var boxElement = document.getElementById("box");
+      var box_headElement = document.getElementById("box_head");
+      var display_cardELement = document.getElementById("display_card");
+      var infoCardElement = document.getElementById("infoCard");
+
+      function yesEvent() {
+        boxElement.innerHTML = `<div class="design">
+                                Enter your details
+                              </div>`;
+
+        infoCardElement.innerHTML = `<div class="design">
+                      <div>Enter your Name :</div>
+                      <br />
+                      <input id="s_name"  type="text" /><br />
+                      <div>Enter your roll no :</div>
+                      <br />
+                      <input id="s_rollno"  type="text" /><br />
+                      <div>Enter your branch :</div>
+                      <br />
+                      <input id="branch"  type="text" /><br />
+                      <button onclick="submit_action()">SUBMIT</button>
+        </div>`;
+      }
+
+      function noEvent() {
+        boxElement.innerHTML = "";
+        infoCardElement.innerHTML = `<div class="design">
+                  <p>THANK YOU 😊</p>
+                  <p>HAVE A GOOD DAY !!!💐</p>
+        </div>
+
+        `;
+      }
+
+      listHTML = "";
+
+      function submit_action() {
+        var s_nameElement = document.getElementById("s_name");
+        var s_rollnoElement = document.getElementById("s_rollno");
+        var branchElement = document.getElementById("branch");
+        listHTML += `<div class="design">
+                                  <div>Name     : ${s_nameElement.value} </div>
+                                  <div>Roll No. : ${s_rollnoElement.value}</div>
+                                  <div>Branch   : ${branchElement.value} </div>
+
+        </div>
+        `;
+        display_cardELement.innerHTML = listHTML;
+
+        boxElement.innerHTML = `<div class="design">
+                         <div id="box_head">
+                        Do you want to enter more details:
+                        </div>
+                        <br /><br />
+                        <div id="option-btm">
+                          <button class="btn" onclick="yesEvent()">
+                            YES
+                          </button>
+                          <button class="btn" onclick="noEvent()">
+                            NO
+                          </button>
+        </div>`;
+        box_headElement.innerHTML = `<div>
+        <p>Thank You!!</p>
+        <p> Do you want to enter more details ??</p>
+        </div>`;
+
+        infoCardElement.innerHTML = "";
+      }
+    </script>
+  </body>
+</html>
